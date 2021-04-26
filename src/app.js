@@ -27,13 +27,6 @@ app.get('', (req, res) => {
     })
 })
 
-app.get('/about', (req, res) => {
-    res.render('about', {
-        title: 'About Me',
-        name: 'Andrew Mead'
-    })
-})
-
 app.get('/help', (req, res) => {
     res.render('help', {
         helpText: 'This is some helpful text.',
