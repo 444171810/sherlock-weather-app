@@ -17,13 +17,14 @@ app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
+
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        name: 'Andrew Mead'
+        name: 'Sherlock'
     })
 })
 
@@ -31,12 +32,12 @@ app.get('/help', (req, res) => {
     res.render('help', {
         helpText: 'This is some helpful text.',
         title: 'Help',
-        name: 'Andrew Mead'
+        name: 'Sherlock'
     })
 })
 
 app.get('/weather', (req, res) => {
-    console.error(req.query.address);
+    //console.error(req.query.address);
     if (!req.query.address) {
         return res.send({
             error: 'You must provide an address!'
@@ -52,7 +53,6 @@ app.get('/weather', (req, res) => {
             if (error) {
                 return res.send({ error })
             }
-            console.log(`forecastData: ${forecastData}`);
             res.send({
                 forecast: forecastData,
                 location,
@@ -69,7 +69,6 @@ app.get('/products', (req, res) => {
         })
     }
 
-    console.log(req.query.search)
     res.send({
         products: []
     })
